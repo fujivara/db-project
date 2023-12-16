@@ -17,7 +17,7 @@ export class Question {
   @Column({ type: 'enum', enum: QuestionType, default: QuestionType.TEXT })
     type: QuestionType;
   @ManyToOne(() => Survey,
-    (survey) => survey.questions, { nullable: false })
+    (survey) => survey.questions, { nullable: true })
     survey: Survey;
   @OneToMany(() => Answer, (answer) => answer.question)
     answers: Answer[];
