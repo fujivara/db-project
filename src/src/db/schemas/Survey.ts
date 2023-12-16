@@ -1,9 +1,8 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import now = jest.now;
 import { User } from './User';
 import { Question } from './Question';
 
-export enum State {
+export enum SurveyState {
   OPENED = 'OPENED',
   CLOSED = 'CLOSED'
 }
@@ -18,8 +17,8 @@ export class Survey {
     description: string;
   @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;
-  @Column({ type: 'enum', enum: State, default: State.OPENED })
-    state: State;
+  @Column({ type: 'enum', enum: SurveyState, default: SurveyState.OPENED })
+    state: SurveyState;
   @ManyToOne(() => User, (user) => user.surveys, { nullable: false })
     user: User;
   @OneToMany(() => Question, (question) => question.survey)

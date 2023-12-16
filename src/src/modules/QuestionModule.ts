@@ -5,9 +5,10 @@ import { Repository } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Question } from '../db/schemas/Question';
 import { Survey } from '../db/schemas/Survey';
+import { Answer } from '../db/schemas/Answer';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Question, Survey])],
+  imports: [TypeOrmModule.forFeature([Question, Survey, Answer])],
   controllers: [QuestionController],
   providers: [QuestionService, Repository],
 })

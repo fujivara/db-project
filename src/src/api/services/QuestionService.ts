@@ -11,7 +11,7 @@ export class QuestionService {
     @InjectRepository(Question)
     private questionRepository: Repository<Question>,
     @InjectRepository(Survey)
-    private surveyRepository: Repository<Survey>
+    private surveyRepository: Repository<Survey>,
   ) {}
 
   async create (data: CreateQuestionDto): Promise<Question> {
