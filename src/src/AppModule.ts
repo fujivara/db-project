@@ -10,6 +10,8 @@ import { Role } from './db/schemas/Role';
 import { Survey } from './db/schemas/Survey';
 import { TextAnswer } from './db/schemas/TextAnswer';
 import { User } from './db/schemas/User';
+import { QuestionModule } from './modules/QuestionModule';
+import { DatabaseModule } from './modules/DatabaseModule';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -32,6 +34,9 @@ import { User } from './db/schemas/User';
       User,
     ],
     synchronize: true,
-  })],
+  }),
+  QuestionModule,
+  DatabaseModule,
+  ],
 })
 export class AppModule {}
