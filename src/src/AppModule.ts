@@ -12,6 +12,7 @@ import { TextAnswer } from './db/schemas/TextAnswer';
 import { User } from './db/schemas/User';
 import { QuestionModule } from './modules/QuestionModule';
 import { DatabaseModule } from './modules/DatabaseModule';
+import { SurveyModule } from './modules/SurveyModule';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -37,6 +38,7 @@ import { DatabaseModule } from './modules/DatabaseModule';
   }),
   QuestionModule,
   DatabaseModule,
+  SurveyModule,
   ],
 })
 export class AppModule {}
