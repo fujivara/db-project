@@ -37,5 +37,4 @@ import { User } from '../db/schemas/User';
   ],
   exports: [TypeOrmModule],
 })
-
 export class DatabaseModule {}

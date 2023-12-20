@@ -1,8 +1,9 @@
-import { BadRequestException, PipeTransform } from '@nestjs/common';
+import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Survey } from '../../db/schemas/Survey';
 
+@Injectable()
 export class SurveyByIdPipe implements PipeTransform {
   constructor (
     @InjectRepository(Survey)
