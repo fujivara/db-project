@@ -5,6 +5,7 @@ import { User } from '../../db/schemas/User';
 import { Question, QuestionType } from '../../db/schemas/Question';
 import { CreateAnswerDto } from '../dtos/CreateAnswerDto';
 import { Answer } from '../../db/schemas/Answer';
+import { Option } from '../../db/schemas/Option';
 
 @Injectable()
 export class CreateAnswerPipe implements PipeTransform<CreateAnswerDto, Promise<CreateAnswerDto>> {
@@ -14,7 +15,9 @@ export class CreateAnswerPipe implements PipeTransform<CreateAnswerDto, Promise<
     @InjectRepository(User)
     private userRepository: Repository<User>,
     @InjectRepository(Answer)
-    private answerRepository: Repository<Answer>
+    private answerRepository: Repository<Answer>,
+    @InjectRepository(Option)
+    private optionRepository:  Repository<Option>
   ) {
   }
 
@@ -47,7 +50,14 @@ export class CreateAnswerPipe implements PipeTransform<CreateAnswerDto, Promise<
       throw new BadRequestException('Both answer types cannot be provided');
     }
 
+    if (question.type === QuestionType.OPTION) {
+      const option = await this.optionRepository.findOneBy({ id: data.optionAnswer.optionId, question });
+
+      if (!option) {
+        throw new BadRequestException('Option with such id not found');
+      }
+    }
+
     return data;
   }
-  
 }
