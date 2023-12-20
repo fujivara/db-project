@@ -10,10 +10,13 @@ export class Answer {
     id: string;
   @ManyToOne(() => User)
     user: User;
-  @ManyToOne(() => Question, (question) => question.answers)
+  @ManyToOne(() => Question, (question) => question.answers,
+    { onDelete: 'CASCADE' })
     question: Question;
-  @OneToMany(() => TextAnswer, (textAnswer) => textAnswer.answer)
+  @OneToMany(() => TextAnswer, (textAnswer) => textAnswer.answer,
+    { onDelete: 'CASCADE' })
     textAnswers: TextAnswer[];
-  @OneToMany(() => OptionAnswer, (optionAnswer) => optionAnswer.answer)
+  @OneToMany(() => OptionAnswer, (optionAnswer) => optionAnswer.answer,
+    { onDelete: 'CASCADE' })
     optionAnswers: OptionAnswer[];
 }

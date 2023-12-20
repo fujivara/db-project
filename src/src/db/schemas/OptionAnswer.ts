@@ -7,8 +7,10 @@ import { Option } from './Option';
 export class OptionAnswer {
   @PrimaryGeneratedColumn('uuid')
     id: string;
-  @ManyToOne(() => Answer, (answer) => answer.optionAnswers)
+  @ManyToOne(() => Answer, (answer) => answer.optionAnswers,
+    { onDelete: 'CASCADE' })
     answer: Answer;
-  @ManyToOne(() => Option, (option) => option.optionAnswers)
+  @ManyToOne(() => Option, (option) => option.optionAnswers,
+    { onDelete: 'CASCADE' })
     option: Option;
 }

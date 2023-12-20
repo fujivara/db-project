@@ -21,6 +21,7 @@ export class Survey {
     state: SurveyState;
   @ManyToOne(() => User, (user) => user.surveys, { nullable: false })
     user: User;
-  @OneToMany(() => Question, (question) => question.survey)
+  @OneToMany(() => Question, (question) => question.survey,
+    { onDelete: 'CASCADE' })
     questions: Question[];
 }
