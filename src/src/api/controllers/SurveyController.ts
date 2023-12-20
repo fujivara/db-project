@@ -20,7 +20,7 @@ export class SurveyController {
     return this.surveyService.getById(surveyId);
   }
 
-  @Delete()
+  @Delete('/:surveyId')
   async delete (@Param('surveyId', SurveyByIdPipe) surveyId: string): Promise<Survey> {
     return this.surveyService.delete(surveyId);
   }

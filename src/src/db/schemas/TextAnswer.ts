@@ -8,6 +8,7 @@ export class TextAnswer {
     id: string;
   @Column({ nullable: false })
     text: string;
-  @ManyToOne(() => Answer, (answer) => answer.textAnswers)
+  @ManyToOne(() => Answer, (answer) => answer.textAnswers,
+    { onDelete: 'CASCADE' })
     answer: Answer;
 }

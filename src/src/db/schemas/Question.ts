@@ -17,10 +17,12 @@ export class Question {
   @Column({ type: 'enum', enum: QuestionType, default: QuestionType.TEXT })
     type: QuestionType;
   @ManyToOne(() => Survey,
-    (survey) => survey.questions, { nullable: true })
+    (survey) => survey.questions, { nullable: true, onDelete: 'CASCADE' })
     survey: Survey;
-  @OneToMany(() => Answer, (answer) => answer.question)
+  @OneToMany(() => Answer, (answer) => answer.question,
+    { onDelete: 'CASCADE' })
     answers: Answer[];
-  @OneToMany(() => Option, (option) => option.question)
+  @OneToMany(() => Option, (option) => option.question,
+    { onDelete: 'CASCADE' })
     options: Option[];
 }

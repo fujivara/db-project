@@ -8,8 +8,10 @@ export class Option {
     id: string;
   @Column()
     text: string;
-  @ManyToOne(() => Question, (question) => question.options, { nullable: true })
+  @ManyToOne(() => Question, (question) => question.options,
+    { nullable: true, onDelete: 'CASCADE' })
     question: Question;
-  @OneToMany(() => OptionAnswer, (optionAnswer) => optionAnswer.option)
+  @OneToMany(() => OptionAnswer, (optionAnswer) => optionAnswer.option,
+    { onDelete: 'CASCADE' })
     optionAnswers: OptionAnswer[];
 }
