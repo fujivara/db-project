@@ -7,7 +7,6 @@ module.exports = {
       serviceWorker: true,
       updatePopup: true
     },
-    ,
     ['container', {
       type: 'vue',
       before: '<pre class="vue-container"><code>',
@@ -96,7 +95,7 @@ module.exports = {
 
   },
   title: '1.Система організації та управління опитуваннями експертів',
-  description: 'Лабораторні роботи з дисципліни "Організація баз даних"',
+  description: 'Курсова робота з дисципліни "Бази даних"',
   configureWebpack: {
     resolve: {
       alias: {
