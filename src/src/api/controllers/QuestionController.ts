@@ -3,6 +3,7 @@ import { QuestionService } from '../services/QuestionService';
 import { CreateQuestionDto } from '../dtos/CreateQuestionDto';
 import { QuestionByIdPipe } from '../pipes/QuestionByIdPipe';
 import { Question } from '../../db/schemas/Question';
+import { UserByIdPipe } from '../pipes/UserByIdPipe';
 
 
 @Controller('/questions')
@@ -22,5 +23,13 @@ export class QuestionController {
   @Delete('/:questionId')
   async delete (@Param('questionId', QuestionByIdPipe) questionId: string) {
     return this.questionService.delete(questionId);
+  }
+
+  @Get('/:questionId/users/:userId')
+  async getUserAnswer (
+    @Param('questionId', QuestionByIdPipe) questionId: string,
+    @Param('userId', UserByIdPipe) userId: string,
+  ) {
+    return this.questionService.getUserAnswer(questionId, userId);
   }
 }

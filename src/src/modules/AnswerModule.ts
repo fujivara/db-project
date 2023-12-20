@@ -11,8 +11,16 @@ import { Option } from '../db/schemas/Option';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Answer, Question, User, TextAnswer, OptionAnswer, Option])],
+  imports: [TypeOrmModule.forFeature([
+    Answer,
+    Question,
+    User,
+    TextAnswer,
+    OptionAnswer,
+    Option,
+  ])],
   controllers: [AnswerController],
   providers: [AnswerService],
+  exports: [AnswerService],
 })
 export class AnswerModule {}

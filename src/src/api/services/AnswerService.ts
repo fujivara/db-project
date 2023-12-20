@@ -9,7 +9,6 @@ import { OptionAnswer } from '../../db/schemas/OptionAnswer';
 import { TextAnswer } from '../../db/schemas/TextAnswer';
 import { Option } from '../../db/schemas/Option';
 import { UpdateAnswerDto } from '../dtos/UpdateAnswerDto';
-import { text } from 'express';
 
 @Injectable()
 export class AnswerService {
@@ -42,10 +41,6 @@ export class AnswerService {
 
     if (question.type === QuestionType.OPTION) {
       const option = await this.optionRepository.findOneBy({ id: data.optionAnswer.optionId, question });
-
-      if (!option) {
-        throw new BadRequestException('Option with such id not found');
-      }
 
       const optionAnswer = this.optionAnswerRepository.create({
         option,
